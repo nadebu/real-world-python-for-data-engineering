@@ -32,3 +32,12 @@ class ApiResponse:
     def __post_init__(self):
         self.info = ApiInfo(**self.info)
         self.results = [CharacterSchema(**item) for item in self.results]
+
+@dataclass
+class ApiParameters:
+    page: Optional[int] = None
+    name: Optional[str] = None
+    status: Optional[Literal['Alive', 'Dead', 'Unknown']] = None
+    species: Optional[str] = None
+    type: Optional[str] = None
+    gender: Optional[Literal["female", "male", "genderless", "unknown"]] = None
